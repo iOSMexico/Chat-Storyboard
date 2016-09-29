@@ -41,9 +41,16 @@ class ChatsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellChat, for: indexPath)
-        cell.textLabel?.text = "Text \(indexPath.item)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellChat, for: indexPath) as! ChatTableViewCell
+        cell.nameOfPerson.text = "Person \(indexPath.row)"
+        cell.lastMessageLabel.text = "This is a example text number \(indexPath.row)"
+        cell.timeLabel.text = "12:00"
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
 
