@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3C09F41DD3F23A00046756 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3C09F31DD3F23A00046756 /* Message.swift */; };
 		2C74F21B1DAD4E780054814C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C74F21A1DAD4E780054814C /* MessagesViewController.swift */; };
 		2C74F21D1DAD4E9B0054814C /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C74F21C1DAD4E9B0054814C /* MessageTableViewCell.swift */; };
 		2C9026081D995D940004482C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9026071D995D940004482C /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C3C09F31DD3F23A00046756 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Model/Message.swift; sourceTree = "<group>"; };
 		2C74F21A1DAD4E780054814C /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Controllers/MessagesViewController.swift; sourceTree = "<group>"; };
 		2C74F21C1DAD4E9B0054814C /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewCell.swift; path = View/MessageTableViewCell.swift; sourceTree = "<group>"; };
 		2C9026041D995D940004482C /* Chat-Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat-Storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3C09F21DD3F22700046756 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2C3C09F31DD3F23A00046756 /* Message.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		2C9025FB1D995D940004482C = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		2C9026061D995D940004482C /* Chat-Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				2C3C09F21DD3F22700046756 /* Model */,
 				2C90261C1D995EB20004482C /* Views */,
 				2C90261B1D995DED0004482C /* Controllers */,
 				2C9026071D995D940004482C /* AppDelegate.swift */,
@@ -164,6 +175,7 @@
 				2C90261E1D995ECE0004482C /* ChatTableViewCell.swift in Sources */,
 				2C9026081D995D940004482C /* AppDelegate.swift in Sources */,
 				2C74F21B1DAD4E780054814C /* MessagesViewController.swift in Sources */,
+				2C3C09F41DD3F23A00046756 /* Message.swift in Sources */,
 				2C74F21D1DAD4E9B0054814C /* MessageTableViewCell.swift in Sources */,
 				2C90261A1D995DEA0004482C /* ChatsTableViewController.swift in Sources */,
 			);
