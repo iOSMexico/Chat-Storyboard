@@ -11,6 +11,7 @@ import UIKit
 class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var messagesTableView: UITableView!
+    @IBOutlet weak var messageTextField: UITextField!
     
     let messageCellId = "messageCellId"
     
@@ -71,6 +72,23 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             cell.messageLabel.textColor = .white
         }
         return cell
+    }
+    
+    // MARK: - Actions
+    @IBAction func sendMessageAction(_ sender: Any){
+        sendMessage()
+    }
+    
+    func sendMessage(){
+        if let text = messageTextField.text{
+            let messageToSend = Message()
+            messageToSend.messageUserId = 1
+            messageToSend.messageText = text
+            messages.append(messageToSend)
+            messagesTableView.reloadData()
+            messageTextField.text = ""
+        }
+        
     }
 
     /*
