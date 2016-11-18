@@ -112,7 +112,7 @@
                                         <rect key="frame" x="8" y="10" width="311" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWp-5Q-hug">
                                         <rect key="frame" x="327" y="10" width="40" height="30"/>
@@ -183,6 +183,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="keyboardHeightLayoutConstraint" destination="utV-Un-ghn" id="9rW-HE-fhi"/>
                         <outlet property="messageTextField" destination="a5M-SI-cfz" id="gXq-Zs-Qc8"/>
                         <outlet property="messagesTableView" destination="eJL-ji-axC" id="hTr-4i-kbE"/>
                     </connections>

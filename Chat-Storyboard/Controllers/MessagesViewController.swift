@@ -8,10 +8,11 @@
 
 import UIKit
 
-class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MessagesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
     let messageCellId = "messageCellId"
     
@@ -21,6 +22,10 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         getExampleData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        messageTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +52,26 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
         message4.messageUserId = 2
         
         messages += [message1, message2, message3, message4]
+    }
+    
+    func keyboardNotification(notification: NSNotification){
+        if let userInfo = notification.userInfo{
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            let duration:TimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions.curveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            if (endFrame?.origin.y)! >= UIScreen.main.bounds.size.height {
+                self.keyboardHeightLayoutConstraint?.constant = 0.0
+            } else {
+                self.keyboardHeightLayoutConstraint?.constant = endFrame?.size.height ?? 0.0
+            }
+            UIView.animate(withDuration: duration,
+                           delay: TimeInterval(0),
+                           options: animationCurve,
+                           animations: { self.view.layoutIfNeeded() },
+                           completion: nil)
+        }
     }
     
     // MARK: - Table delegates
@@ -80,6 +105,8 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func sendMessage(){
+        messageTextField.resignFirstResponder()
+        
         if let text = messageTextField.text{
             let messageToSend = Message()
             messageToSend.messageUserId = 1
@@ -89,6 +116,13 @@ class MessagesViewController: UIViewController, UITableViewDelegate, UITableView
             messageTextField.text = ""
         }
         
+    }
+    
+    
+    // MARK: - Textfield delegates
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        sendMessage()
+        return true
     }
 
     /*
